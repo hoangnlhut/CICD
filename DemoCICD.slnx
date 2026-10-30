@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="README.txt" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/DemoCICD.API/DemoCICD.API.csproj" />
+    <Project Path="src/DemoCICD.Application/DemoCICD.Application.csproj" />
+    <Project Path="src/DemoCICD.Contract/DemoCICD.Contract.csproj" Id="9ef185b0-3f73-4cc7-9906-63e7516d7a5c" />
+    <Project Path="src/DemoCICD.Domain/DemoCICD.Domain.csproj" />
+    <Project Path="src/DemoCICD.Infrastructure/DemoCICD.Infrastructure.csproj" />
+    <Project Path="src/DemoCICD.Persistence/DemoCICD.Persistence.csproj" />
+    <Project Path="src/DemoCICD.Presentation/DemoCICD.Presentation.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/DemoCICD.Architecture.Tests/DemoCICD.Architecture.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DemoCICD.Application\DemoCICD.Application.csproj" />
+    <ProjectReference Include="..\DemoCICD.Infrastructure\DemoCICD.Infrastructure.csproj" />
+    <ProjectReference Include="..\DemoCICD.Persistence\DemoCICD.Persistence.csproj" />
+    <ProjectReference Include="..\DemoCICD.Presentation\DemoCICD.Presentation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="E:\LEARNING\SELF_TRAINING_FOLDER\.NET_Projects\A999_DotNet_Microservices\TranDongCourse\DemoCICD\src\DemoCICD.API\.editorconfig" />
+  </ItemGroup>
+
+</Project>
