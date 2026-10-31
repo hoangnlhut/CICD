@@ -265,3 +265,4 @@ STEP BY STEP GUIDE TO CREATE A CLEAN ARCHITECTURE PROJECT:
 		- FluentValidation
 		- FluentValidation.DependencyInjectionExtensions
 	
+
