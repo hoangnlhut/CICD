@@ -1,16 +1,5 @@
 🚀.NET Core Clean Architecture & CICD
 
-📡 Applications Relation
-
-		  ---->	Presentation (ref to Ìnfrastructure, Application)     
-         |        
-API -------->	Infrastructure  (ref to Application and Persistence)             
-		 |	
-		 -----> Application  --------------->     Domain    
-		 |		                           | 
-		 ----->	 Persistence -------------- 
-				
-
 🧩 Patterns & Practices Implemented
 ✔ CQRS (Command Query Responsibility Segregation) 
 ✔ Repository & Specification Pattern
