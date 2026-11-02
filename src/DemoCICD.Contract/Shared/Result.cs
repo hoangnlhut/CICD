@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DemoCICD.Contract.Shared
+﻿namespace DemoCICD.Contract.Shared
 {
-    public class Result 
+    public class Result
     {
         protected internal Result(bool isSuccess, Error error)
         {
@@ -20,47 +14,24 @@ namespace DemoCICD.Contract.Shared
                 throw new InvalidOperationException();
             }
 
-            IsSuccess = isSuccess;
-            Error = error;
+            this.IsSuccess = isSuccess;
+            this.Error = error;
         }
 
         public bool IsSuccess { get; }
 
-        public bool IsFailure => !IsSuccess;
+        public bool IsFailure => !this.IsSuccess;
 
         public Error Error { get; }
 
         public static Result Success() => new Result(true, Error.None);
 
-        public static Result<TValue> Success<TValue>(TValue value) => new Result<TValue>(value, true, Error.None);
+        public static ResultT<TValue> Success<TValue>(TValue value) => new ResultT<TValue>(value, true, Error.None);
 
         public static Result Failure(Error error) => new Result(false, error);
 
-        public static Result<TValue> Failure<TValue>(Error error) => new Result<TValue>(default(TValue), false, error);
+        public static ResultT<TValue> Failure<TValue>(Error error) => new ResultT<TValue>(default(TValue), false, error);
 
-        public static Result<TValue> Create<TValue>(TValue? value) => value is not null ? Success(value) : Failure<TValue>(Error.NullValue);
-    }
-
-    public class Result<TValue> : Result
-    {
-        private readonly TValue? _value;
-        protected internal Result(TValue? value, bool isSuccess, Error error)
-            : base(isSuccess, error)
-        {
-            _value = value;
-        }
-        public TValue Value
-        {
-            get
-            {
-                if (IsFailure)
-                {
-                    throw new InvalidOperationException("The value of a failed result cannot be accessed.");
-                }
-                return _value!;
-            }
-        }
-        
-        public static implicit operator Result<TValue>(TValue? value) => Create(value);
+        public static ResultT<TValue> Create<TValue>(TValue? value) => value is not null ? Success(value) : Failure<TValue>(Error.NullValue);
     }
 }
