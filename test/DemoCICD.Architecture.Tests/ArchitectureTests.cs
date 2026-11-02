@@ -163,6 +163,7 @@ namespace DemoCICD.Architecture.Tests
         #endregion
 
 
+        #region Command Tests
         #region Command interface should have naming convention of ending with "Command"
         [Fact]
         public void CommandInterface_Should_Have_NamingConvention_EndingWithCommand()
@@ -234,6 +235,226 @@ namespace DemoCICD.Architecture.Tests
             // Assert
             testResult.IsSuccessful.Should().BeTrue();
         }
+        #endregion
+
+        #region Command should be sealed class
+        [Fact]
+        public void Command_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(ICommand))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region CommandT should be sealed class
+        [Fact]
+        public void CommandT_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(ICommand<>))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region Command Handler should be sealed class
+        [Fact]
+        public void CommandHandler_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(ICommandHandler<>))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region Command HandlerT should be sealed class
+        [Fact]
+        public void CommandHandlerT_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(ICommandHandler<,>))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+        #endregion
+
+        #region Query Tests
+        #region Query interface should have naming convention of ending with "Query"
+        [Fact]
+        public void QueryInterface_Should_Have_NamingConvention_EndingWithQuery()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQuery))
+                .Should()
+                .HaveNameEndingWith("Query")
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region QueryT interface should have naming convention of ending with "Query"
+        [Fact]
+        public void QueryTInterface_Should_Have_NamingConvention_EndingWithQuery()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQuery<>))
+                .Should()
+                .HaveNameEndingWith("Query")
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region Query Handler interface should have naming convention of ending with "QueryHandler"
+        [Fact]
+        public void QueryHandlerInterface_Should_Have_NamingConvention_EndingWithQueryHandler()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQueryHandler<>))
+                .Should()
+                .HaveNameEndingWith("QueryHandler")
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+
+        #region Query Handler interface with input and output should have naming convention of ending with "QueryHandler"
+        [Fact]
+        public void QueryHandlerInterface_WithInputAndOutput_Should_Have_NamingConvention_EndingWithQueryHandler()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQueryHandler<,>))
+                .Should()
+                .HaveNameEndingWith("QueryHandler")
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region Query should be sealed class
+        [Fact]
+        public void Query_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQuery))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region QueryT should be sealed class
+        [Fact]
+        public void QueryT_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQuery<>))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region Query Handler should be sealed class
+        [Fact]
+        public void QueryHandler_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQueryHandler<>))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region Query HandlerT should be sealed class
+        [Fact]
+        public void QueryHandlerT_Should_Be_SealedClass()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(IQueryHandler<,>))
+                .Should()
+                .BeSealed()
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
         #endregion
 
     }

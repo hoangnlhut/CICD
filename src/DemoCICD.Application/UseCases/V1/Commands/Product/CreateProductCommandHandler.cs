@@ -3,7 +3,7 @@ using DemoCICD.Application.Abstractions.Message;
 
 namespace DemoCICD.Application.UseCases.V1.Commands.Product
 {
-    public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand>
+    public sealed class CreateProductCommandHandler : ICommandHandler<CreateProductCommand>
     {
         public Task<Result> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
