@@ -257,12 +257,5 @@ STEP BY STEP GUIDE TO CREATE A CLEAN ARCHITECTURE PROJECT:
 	- Test5: Verify that the "DemoCICD.Presentation" project only depends on the "DemoCICD.Infrastructure" and "DemoCICD.Application" projects.
 	- Test6: Verify that the "DemoCICD.API" project only depends on the "DemoCICD.Presentation", "DemoCICD.Infrastructure", and "DemoCICD.Persistence" and "DemoCICD.Application" projects.
 
-						
-6. Application project:
-	i. Install the following NuGet packages:
-		- MediatR
-		- MediatR.Extensions.Microsoft.DependencyInjection
-		- FluentValidation
-		- FluentValidation.DependencyInjectionExtensions
 	
 
