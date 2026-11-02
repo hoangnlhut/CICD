@@ -163,7 +163,7 @@ namespace DemoCICD.Architecture.Tests
         #endregion
 
 
-        #region Command Tests
+        #region ========================Command Tests==========================
         #region Command interface should have naming convention of ending with "Command"
         [Fact]
         public void CommandInterface_Should_Have_NamingConvention_EndingWithCommand()
@@ -310,7 +310,7 @@ namespace DemoCICD.Architecture.Tests
         #endregion
         #endregion
 
-        #region Query Tests
+        #region ========================Query Tests==========================
         #region Query interface should have naming convention of ending with "Query"
         [Fact]
         public void QueryInterface_Should_Have_NamingConvention_EndingWithQuery()
