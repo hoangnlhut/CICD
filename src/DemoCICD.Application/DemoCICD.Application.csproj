@@ -11,13 +11,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\" />
     <Folder Include="Behaviors\" />
     <Folder Include="DependencyInjection\Extensions\" />
     <Folder Include="DependencyInjection\Options\" />
-    <Folder Include="UseCases\V1\Commands\" />
-    <Folder Include="UseCases\V1\Queries\" />
-    <Folder Include="UseCases\V2\" />
+    <Folder Include="UseCases\V1\Commands\Product\" />
+    <Folder Include="UseCases\V1\Commands\Order\" />
+    <Folder Include="UseCases\V1\Queries\Product\" />
+    <Folder Include="UseCases\V1\Queries\Order\" />
+    <Folder Include="UseCases\V2\Commands\Order\" />
+    <Folder Include="UseCases\V2\Commands\Product\" />
+    <Folder Include="UseCases\V2\Queries\Order\" />
+    <Folder Include="UseCases\V2\Queries\Product\" />
   </ItemGroup>
 
   <ItemGroup>
