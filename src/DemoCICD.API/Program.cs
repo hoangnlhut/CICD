@@ -1,4 +1,8 @@
 
+using DemoCICD.Application.Behaviors;
+using FluentValidation;
+using MediatR;
+
 namespace DemoCICD.API
 {
     public class Program
@@ -16,8 +20,18 @@ namespace DemoCICD.API
             // Add Swagger/OpenAPI services
             builder.Services.AddSwaggerGen();
 
-            var app = builder.Build();
+            //add configuration for the application
+            // Register MediatR and tell it to scan the current assembly for handlers
+            builder.Services.AddMediatR(cfg =>
+                cfg.RegisterServicesFromAssembly(DemoCICD.Application.AssemblyReference.Assembly));
+            builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipeLineBehavior<,>));
 
+            //add fluent validation services
+            builder.Services.AddValidatorsFromAssembly(DemoCICD.Application.AssemblyReference.Assembly, includeInternalTypes: true);
+
+
+            var app = builder.Build();
+ 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
