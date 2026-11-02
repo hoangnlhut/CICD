@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using DemoCICD.Application.Abstractions.Message;
+using FluentAssertions;
 using NetArchTest.Rules;
 
 namespace DemoCICD.Architecture.Tests
@@ -161,6 +162,42 @@ namespace DemoCICD.Architecture.Tests
         }
         #endregion
 
+
+        #region Command interface should have naming convention of ending with "Command"
+        [Fact]
+        public void CommandInterface_Should_Have_NamingConvention_EndingWithCommand()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(ICommand))
+                .Should()
+                .HaveNameEndingWith("Command")
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+        #region Command Handler interface should have naming convention of ending with "CommandHandler"
+        [Fact]
+        public void CommandHandlerInterface_Should_Have_NamingConvention_EndingWithCommandHandler()
+        {
+            // Arrange
+            var assembly = typeof(Application.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .ImplementInterface(typeof(ICommandHandler<>))
+                .Should()
+                .HaveNameEndingWith("CommandHandler")
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
 
     }
 }
