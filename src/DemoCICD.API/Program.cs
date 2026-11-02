@@ -13,12 +13,17 @@ namespace DemoCICD.API
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            // Add Swagger/OpenAPI services
+            builder.Services.AddSwaggerGen();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseSwagger();   // Serves the generated JSON document
+                app.UseSwaggerUI(); // Serves the interactive web UI
             }
 
             app.UseHttpsRedirection();
