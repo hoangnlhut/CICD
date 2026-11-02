@@ -8,6 +8,6 @@
             Errors = errors;
         }
 
-        public static ValidationResult Fail(Error[] errors) => new(errors);
+        public static ValidationResult WithErrors(Error[] errors) => new(errors);
     }
 }
