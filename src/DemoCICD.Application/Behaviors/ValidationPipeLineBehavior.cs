@@ -30,7 +30,7 @@ namespace DemoCICD.Application.Behaviors
                 .Distinct()
                 .ToArray();
 
-            if(errors.Any())
+            if(errors.Length > 0)
             {
                 return CreateValidationResult<TResponse>(errors);
             }
@@ -42,7 +42,7 @@ namespace DemoCICD.Application.Behaviors
         {
             if(typeof(TResult) == typeof(Result))
             {
-                return (ValidationResult.WithErrors(errors) as TResult);
+                return (TResult)(object)ValidationResultT<Result>.WithErrors(errors);
             }
 
             object validationResult = typeof(ValidationResultT<>)
@@ -51,7 +51,7 @@ namespace DemoCICD.Application.Behaviors
                 .GetMethod(nameof(ValidationResultT<object>.WithErrors))!
                 .Invoke(null, new object?[] { errors })!;
 
-            throw (TResult)validationResult;
+            return (TResult)validationResult;
         }
     }
 }
