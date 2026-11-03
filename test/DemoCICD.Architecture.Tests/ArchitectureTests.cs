@@ -1,4 +1,4 @@
-﻿using DemoCICD.Application.Abstractions.Message;
+﻿using DemoCICD.Contract.Abstractions.Message;
 using FluentAssertions;
 using NetArchTest.Rules;
 
@@ -169,7 +169,7 @@ namespace DemoCICD.Architecture.Tests
         public void CommandInterface_Should_Have_NamingConvention_EndingWithCommand()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -187,7 +187,7 @@ namespace DemoCICD.Architecture.Tests
         public void CommandTInterface_Should_Have_NamingConvention_EndingWithCommand()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -205,7 +205,7 @@ namespace DemoCICD.Architecture.Tests
         public void CommandHandlerInterface_Should_Have_NamingConvention_EndingWithCommandHandler()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -224,7 +224,7 @@ namespace DemoCICD.Architecture.Tests
         public void CommandHandlerInterface_WithInputAndOutput_Should_Have_NamingConvention_EndingWithCommandHandler()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -242,7 +242,7 @@ namespace DemoCICD.Architecture.Tests
         public void Command_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -260,7 +260,7 @@ namespace DemoCICD.Architecture.Tests
         public void CommandT_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -278,7 +278,7 @@ namespace DemoCICD.Architecture.Tests
         public void CommandHandler_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -296,7 +296,7 @@ namespace DemoCICD.Architecture.Tests
         public void CommandHandlerT_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -316,7 +316,7 @@ namespace DemoCICD.Architecture.Tests
         public void QueryInterface_Should_Have_NamingConvention_EndingWithQuery()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -334,7 +334,7 @@ namespace DemoCICD.Architecture.Tests
         public void QueryTInterface_Should_Have_NamingConvention_EndingWithQuery()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -352,7 +352,7 @@ namespace DemoCICD.Architecture.Tests
         public void QueryHandlerInterface_Should_Have_NamingConvention_EndingWithQueryHandler()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -371,7 +371,7 @@ namespace DemoCICD.Architecture.Tests
         public void QueryHandlerInterface_WithInputAndOutput_Should_Have_NamingConvention_EndingWithQueryHandler()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -389,7 +389,7 @@ namespace DemoCICD.Architecture.Tests
         public void Query_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -407,7 +407,7 @@ namespace DemoCICD.Architecture.Tests
         public void QueryT_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -425,7 +425,7 @@ namespace DemoCICD.Architecture.Tests
         public void QueryHandler_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
@@ -443,7 +443,7 @@ namespace DemoCICD.Architecture.Tests
         public void QueryHandlerT_Should_Be_SealedClass()
         {
             // Arrange
-            var assembly = typeof(Application.AssemblyReference).Assembly;
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
             // Act
             var testResult = Types.InAssembly(assembly)
                 .That()
