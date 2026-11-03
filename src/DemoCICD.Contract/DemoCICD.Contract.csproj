@@ -10,10 +10,11 @@
     <Folder Include="DataTransferObjects\" />
     <Folder Include="Enumerations\" />
     <Folder Include="JsonConverters\" />
-    <Folder Include="Services\" />
+    <Folder Include="Services\Order\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.2.0" />
     <PackageReference Include="MediatR" Version="14.2.0" />
   </ItemGroup>
 
