@@ -1,7 +1,7 @@
 ﻿using DemoCICD.Contract.Shared;
 using MediatR;
 
-namespace DemoCICD.Application.Abstractions.Message
+namespace DemoCICD.Contract.Abstractions.Message
 {
     public interface IQueryHandler<TQuery> : IRequestHandler<TQuery, Result>
         where TQuery : IQuery

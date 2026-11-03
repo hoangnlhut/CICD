@@ -1,7 +1,7 @@
 ﻿using DemoCICD.Contract.Shared;
 using MediatR;
 
-namespace DemoCICD.Application.Abstractions.Message
+namespace DemoCICD.Contract.Abstractions.Message
 {
     public interface ICommandHandler<TCommand> : IRequestHandler<TCommand, Result>
         where TCommand : ICommand
