@@ -17,7 +17,7 @@ namespace DemoCICD.Application.DependencyInjection.Extensions
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipeLineBehavior<,>));
 
             //add fluent validation services
-            services.AddValidatorsFromAssembly(AssemblyReference.Assembly, includeInternalTypes: true);
+            services.AddValidatorsFromAssembly(Contract.AssemblyReference.Assembly, includeInternalTypes: true);
 
             return services;
         }
