@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DependencyInjection\Extensions\" />
+    <Folder Include="Abstractions\" />
     <Folder Include="DependencyInjection\Options\" />
     <Folder Include="UseCases\V1\Commands\Order\" />
     <Folder Include="UseCases\V1\Queries\Order\" />
@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.2.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.2.0" />
     <PackageReference Include="MediatR" Version="14.2.0" />
   </ItemGroup>
 

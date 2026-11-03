@@ -1,4 +1,4 @@
-﻿using DemoCICD.Application.Abstractions.Message;
+﻿using DemoCICD.Contract.Abstractions.Message;
 using DemoCICD.Contract.Shared;
 using MediatR;
 

@@ -1,4 +1,4 @@
-﻿using DemoCICD.Application.Abstractions.Message;
+﻿using DemoCICD.Contract.Abstractions.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;
