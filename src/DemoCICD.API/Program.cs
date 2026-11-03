@@ -1,7 +1,5 @@
 
-using DemoCICD.Application.Behaviors;
-using FluentValidation;
-using MediatR;
+using DemoCICD.Application.DependencyInjection.Extensions;
 
 namespace DemoCICD.API
 {
@@ -21,13 +19,7 @@ namespace DemoCICD.API
             builder.Services.AddSwaggerGen();
 
             //add configuration for the application
-            // Register MediatR and tell it to scan the current assembly for handlers
-            builder.Services.AddMediatR(cfg =>
-                cfg.RegisterServicesFromAssembly(DemoCICD.Application.AssemblyReference.Assembly));
-            builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipeLineBehavior<,>));
-
-            //add fluent validation services
-            builder.Services.AddValidatorsFromAssembly(DemoCICD.Application.AssemblyReference.Assembly, includeInternalTypes: true);
+            builder.Services.AddConfigureApplication();
 
 
             var app = builder.Build();
