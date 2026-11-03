@@ -1,5 +1,6 @@
 ﻿using DemoCICD.Contract.Abstractions.Message;
 using FluentAssertions;
+using FluentValidation;
 using NetArchTest.Rules;
 
 namespace DemoCICD.Architecture.Tests
@@ -457,5 +458,30 @@ namespace DemoCICD.Architecture.Tests
         #endregion
         #endregion
 
+
+        #region========================Validator Rules==========================
+
+        #region Action validator should have naming convention of ending with "Validator"
+        [Fact]
+        public void ActionValidator_Should_Have_NamingConvention_EndingWithValidator()
+        {
+            // Arrange
+            var assembly = typeof(Contract.AssemblyReference).Assembly;
+            // Act
+            var testResult = Types.InAssembly(assembly)
+                .That()
+                .Inherit(typeof(AbstractValidator<>))
+                .Should()
+                .HaveNameEndingWith("Validator")
+                .GetResult();
+            // Assert
+            testResult.IsSuccessful.Should().BeTrue();
+        }
+        #endregion
+
+
+
+
+        #endregion
     }
 }
