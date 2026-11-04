@@ -250,7 +250,7 @@ STEP BY STEP GUIDE TO CREATE A CLEAN ARCHITECTURE PROJECT:
 # Applying Migrations in EF Core
 ## Create Migrations
 	1. Windows command prompt: "Add-Migration MigrationName [options]"
-	2. dotnet CLI: "dotnet ef migrations add MigrationName [options]"
+	2. dotnet CLI: "dotnet ef migrations add InitialCreate --project DemoCICD.Persistence --startup-project DemoCICD.API" --> use iTTTT
 	=>> EX-PMC: "Add-Migration InitialMigration"
 	=>> EX-CLI: "dotnet ef migrations add InitialMigration --output-dir Your/Directory"
 
