@@ -257,5 +257,34 @@ STEP BY STEP GUIDE TO CREATE A CLEAN ARCHITECTURE PROJECT:
 	- Test5: Verify that the "DemoCICD.Presentation" project only depends on the "DemoCICD.Infrastructure" and "DemoCICD.Application" projects.
 	- Test6: Verify that the "DemoCICD.API" project only depends on the "DemoCICD.Presentation", "DemoCICD.Infrastructure", and "DemoCICD.Persistence" and "DemoCICD.Application" projects.
 
-	
+
+# Applying Migrations in EF Core
+## Create Migrations
+	1. Windows command prompt: "Add-Migration MigrationName [options]"
+	2. dotnet CLI: "dotnet ef migrations add MigrationName [options]"
+	=>> EX-PMC: "Add-Migration InitialMigration"
+	=>> EX-CLI: "dotnet ef migrations add InitialMigration --output-dir Your/Directory"
+
+## Applying Created Migration
+	1. Windows command prompt: "Update-Database [options]"
+	2. dotnet CLI: "dotnet ef database update [options]"
+	=>> EX-PMC: "Update-Database"
+
+## Removing a Migration
+	1. Windows command prompt: "Remove-Migration [options]"
+	2. dotnet CLI: "dotnet ef migrations remove [options]"
+	=>> EX-PMC: "Remove-Migration"
+
+
+# Command-Query-Event
+
+ICommand(V+N) : IRequest => CommandBus (ISender) => ICommandHandler : IRequestHandler
+IQuery(V+N) : IRequest   => QueryBus (ISender) => IQueryHandler : IRequestHandler
+
+IDomainEvent: Inotification => EventBus (IPublisher) => IDomainEventHandler : INotificationHandler
+
+Inmemory (RAM)
+
+DomainEvent : Notification : MediatR => Memory
+IntegrationEvent : Masstransit | Rebus => MessageBus (RabbitMQ,Kafka)	
 
