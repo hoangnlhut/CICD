@@ -17,12 +17,15 @@ namespace DemoCICD.Persistence.DependencyInjection.Extensions
                 var configuration = serviceProvider.GetRequiredService<IConfiguration>();
                 var options = serviceProvider.GetRequiredService<IOptionsMonitor<SqlServerRetryOptions>>();
 
+                var connectionString = configuration.GetConnectionString("ConnectionStrings");
+                Console.WriteLine($"Connection String: {connectionString}");
+
                 optionsBuilder
                 .EnableDetailedErrors()
                 .EnableSensitiveDataLogging()
                 .UseLazyLoadingProxies() // => If UseLazyLoadingProxies, all of the navigation properties should be VIRTUAL.
                 .UseSqlServer(
-                    connectionString: configuration.GetConnectionString("ConnectionString"),
+                    connectionString: connectionString,
                     sqlServerOptionsAction: optionsBuilder =>
                        optionsBuilder.ExecutionStrategy(
                        dependencies => new SqlServerRetryingExecutionStrategy(
