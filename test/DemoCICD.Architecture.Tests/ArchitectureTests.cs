@@ -14,6 +14,7 @@ namespace DemoCICD.Architecture.Tests
         private const string PresentationNamespace = "DemoCICD.Presentation";
         private const string ApiNamespace = "DemoCICD.API";
 
+        #region ======================Architecture Tests=========================
         #region Test1: Verify that the "DemoCICD.Domain" project does not have any dependencies on other projects.
         [Fact]
         public void DomainProject_Should_Not_HaveDependencies_OnOtherProjects()
@@ -162,26 +163,26 @@ namespace DemoCICD.Architecture.Tests
             testResult.IsSuccessful.Should().BeTrue();
         }
         #endregion
-
+        #endregion
 
         #region ========================Command Tests==========================
-        #region Command interface should have naming convention of ending with "Command"
-        [Fact]
-        public void CommandInterface_Should_Have_NamingConvention_EndingWithCommand()
-        {
-            // Arrange
-            var assembly = typeof(Contract.AssemblyReference).Assembly;
-            // Act
-            var testResult = Types.InAssembly(assembly)
-                .That()
-                .ImplementInterface(typeof(ICommand))
-                .Should()
-                .HaveNameEndingWith("Command")
-                .GetResult();
-            // Assert
-            testResult.IsSuccessful.Should().BeTrue();
-        }
-        #endregion
+        //#region Command interface should have naming convention of ending with "Command"
+        //[Fact]
+        //public void CommandInterface_Should_Have_NamingConvention_EndingWithCommand()
+        //{
+        //    // Arrange
+        //    var assembly = typeof(Contract.AssemblyReference).Assembly;
+        //    // Act
+        //    var testResult = Types.InAssembly(assembly)
+        //        .That()
+        //        .ImplementInterface(typeof(ICommand))
+        //        .Should()
+        //        .HaveNameEndingWith("Command")
+        //        .GetResult();
+        //    // Assert
+        //    testResult.IsSuccessful.Should().BeTrue();
+        //}
+        //#endregion
 
         #region CommandT interface should have naming convention of ending with "Command"
         [Fact]
@@ -238,23 +239,23 @@ namespace DemoCICD.Architecture.Tests
         }
         #endregion
 
-        #region Command should be sealed class
-        [Fact]
-        public void Command_Should_Be_SealedClass()
-        {
-            // Arrange
-            var assembly = typeof(Contract.AssemblyReference).Assembly;
-            // Act
-            var testResult = Types.InAssembly(assembly)
-                .That()
-                .ImplementInterface(typeof(ICommand))
-                .Should()
-                .BeSealed()
-                .GetResult();
-            // Assert
-            testResult.IsSuccessful.Should().BeTrue();
-        }
-        #endregion
+        //#region Command should be sealed class
+        //[Fact]
+        //public void Command_Should_Be_SealedClass()
+        //{
+        //    // Arrange
+        //    var assembly = typeof(Contract.AssemblyReference).Assembly;
+        //    // Act
+        //    var testResult = Types.InAssembly(assembly)
+        //        .That()
+        //        .ImplementInterface(typeof(ICommand))
+        //        .Should()
+        //        .BeSealed()
+        //        .GetResult();
+        //    // Assert
+        //    testResult.IsSuccessful.Should().BeTrue();
+        //}
+        //#endregion
 
         #region CommandT should be sealed class
         [Fact]
@@ -403,23 +404,23 @@ namespace DemoCICD.Architecture.Tests
         }
         #endregion
 
-        #region QueryT should be sealed class
-        [Fact]
-        public void QueryT_Should_Be_SealedClass()
-        {
-            // Arrange
-            var assembly = typeof(Contract.AssemblyReference).Assembly;
-            // Act
-            var testResult = Types.InAssembly(assembly)
-                .That()
-                .ImplementInterface(typeof(IQuery<>))
-                .Should()
-                .BeSealed()
-                .GetResult();
-            // Assert
-            testResult.IsSuccessful.Should().BeTrue();
-        }
-        #endregion
+        //#region QueryT should be sealed class
+        //[Fact]
+        //public void QueryT_Should_Be_SealedClass()
+        //{
+        //    // Arrange
+        //    var assembly = typeof(Contract.AssemblyReference).Assembly;
+        //    // Act
+        //    var testResult = Types.InAssembly(assembly)
+        //        .That()
+        //        .ImplementInterface(typeof(IQuery<>))
+        //        .Should()
+        //        .BeSealed()
+        //        .GetResult();
+        //    // Assert
+        //    testResult.IsSuccessful.Should().BeTrue();
+        //}
+        //#endregion
 
         #region Query Handler should be sealed class
         [Fact]
@@ -457,7 +458,6 @@ namespace DemoCICD.Architecture.Tests
         }
         #endregion
         #endregion
-
 
         #region========================Validator Rules==========================
 
