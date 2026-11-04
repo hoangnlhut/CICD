@@ -10,7 +10,7 @@ namespace DemoCICD.Persistence.DependencyInjection.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddConfigurePersistenceSqlServer(this IServiceCollection services, IConfigurationSection section)
+        public static IServiceCollection AddConfigurePersistenceSqlServer(this IServiceCollection services)
         {
             services.AddDbContextPool<DbContext, ApplicationDbContext>((serviceProvider, optionsBuilder) =>
             {
