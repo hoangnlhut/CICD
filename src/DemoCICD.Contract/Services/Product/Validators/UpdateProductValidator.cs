@@ -3,7 +3,7 @@ using static DemoCICD.Contract.Services.Product.Command;
 
 namespace DemoCICD.Contract.Services.Product.Validators
 {
-    public class UpdateProductValidator : AbstractValidator<UpdateProductCommand>
+    public class UpdateProductValidator : AbstractValidator<UpdateProduct>
     {
         public UpdateProductValidator()
         {

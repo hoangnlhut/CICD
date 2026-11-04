@@ -1,6 +1,5 @@
 ﻿using DemoCICD.Contract.Abstractions.Message;
 using DemoCICD.Contract.Shared;
-using MediatR;
 
 namespace DemoCICD.Application.UseCases.V1.Queries.Product
 {
