@@ -15,7 +15,7 @@ namespace DemoCICD.Persistence
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfigurationsFromAssembly(AssemblyReference.Assembly);
+          builder.ApplyConfigurationsFromAssembly(AssemblyReference.Assembly);
         }
 
         public DbSet<AppUser> AppUsers { get; set; }
