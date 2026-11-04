@@ -1,5 +1,7 @@
 
 using DemoCICD.Application.DependencyInjection.Extensions;
+using DemoCICD.Persistence.DependencyInjection.Extensions;
+using DemoCICD.Persistence.DependencyInjection.Options;
 
 namespace DemoCICD.API
 {
@@ -20,6 +22,9 @@ namespace DemoCICD.API
 
             //add configuration for the application
             builder.Services.AddConfigureApplication();
+
+            builder.Services.ConfigureSqlServerRetryOption(builder.Configuration.GetSection(nameof(SqlServerRetryOptions)));
+            builder.Services.AddConfigurePersistenceSqlServer();
 
 
             var app = builder.Build();
