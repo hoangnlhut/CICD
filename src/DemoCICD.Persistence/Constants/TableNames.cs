@@ -3,6 +3,7 @@ namespace DemoCICD.Persistence.Constants
 {
     public static class TableNames
     {
+        // *******************Plural nouns*************************
         internal const string Actions = nameof(Actions);
         internal const string Functions = nameof(Functions);
         internal const string ActionInFunctions = nameof(ActionInFunctions);
@@ -17,6 +18,7 @@ namespace DemoCICD.Persistence.Constants
         internal const string AppUserLogins = nameof(AppUserLogins);  //IdentityUserLogin
         internal const string AppUserTokens = nameof(AppUserTokens);  //IdentityUserToken
 
+        // *******************Single nouns*************************
         internal const string Product = nameof(Product);
     }
 }
