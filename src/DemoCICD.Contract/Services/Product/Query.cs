@@ -10,7 +10,7 @@ namespace DemoCICD.Contract.Services.Product
 {
     public static class Query
     {
-        public record GetProductQuery() : IQuery<IEnumerable<ProductResponse>>;
+        public record GetProductQuery() : IQuery<List<ProductResponse>>;
         public record GetProductByIdQuery(Guid Id) : IQuery<ProductResponse>;
     }
 }
