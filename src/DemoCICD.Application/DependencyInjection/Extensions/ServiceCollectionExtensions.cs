@@ -8,22 +8,24 @@ namespace DemoCICD.Application.DependencyInjection.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        //TODO: consider to split this method into multiple methods for better separation of concerns for each service registration
         public static IServiceCollection AddConfigureApplication(this IServiceCollection services)
         {
-            // Implementation for configuring MediaR
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AssemblyReference).Assembly));
+            services.AddApplicationValidation();
+            services.AddApplicationMapping();
+            return services;
+        }
 
-            //add configuration for the application
-            // Register MediatR and tell it to scan the current assembly for handlers
+        private static IServiceCollection AddApplicationValidation(this IServiceCollection services)
+        {
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipeLineBehavior<,>));
-
-            //add fluent validation services
             services.AddValidatorsFromAssembly(Contract.AssemblyReference.Assembly, includeInternalTypes: true);
+            return services;
+        }
 
-            //add automapper services
+        private static IServiceCollection AddApplicationMapping(this IServiceCollection services)
+        {
             services.AddAutoMapper(typeof(ServiceProfile));
-
             return services;
         }
     }

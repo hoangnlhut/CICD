@@ -7,7 +7,7 @@ namespace DemoCICD.Application.Mappers
     {
         public ServiceProfile()
         {
-            CreateMap<Domain.Entities.Product, ProductResponse>();
+            CreateMap<Domain.Entities.Product, ProductResponse>().ReverseMap();
         }
     }
 }
