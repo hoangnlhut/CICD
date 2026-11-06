@@ -1,12 +1,14 @@
 ﻿using DemoCICD.Application.Behaviors;
+using DemoCICD.Application.Mappers;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using FluentValidation;
 
 namespace DemoCICD.Application.DependencyInjection.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        //TODO: consider to split this method into multiple methods for better separation of concerns for each service registration
         public static IServiceCollection AddConfigureApplication(this IServiceCollection services)
         {
             // Implementation for configuring MediaR
@@ -18,6 +20,9 @@ namespace DemoCICD.Application.DependencyInjection.Extensions
 
             //add fluent validation services
             services.AddValidatorsFromAssembly(Contract.AssemblyReference.Assembly, includeInternalTypes: true);
+
+            //add automapper services
+            services.AddAutoMapper(typeof(ServiceProfile));
 
             return services;
         }
