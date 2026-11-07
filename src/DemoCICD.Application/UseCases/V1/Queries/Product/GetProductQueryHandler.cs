@@ -17,11 +17,11 @@ namespace DemoCICD.Application.UseCases.V1.Queries.Product
             _mapper = mapper;
         }
 
-        public Task<ResultT<List<Response.ProductResponse>>> Handle(Query.GetProductQuery request, CancellationToken cancellationToken)
+        public async Task<ResultT<List<Response.ProductResponse>>> Handle(Query.GetProductQuery request, CancellationToken cancellationToken)
         {
 
-            var products = _repository.FindAll(null, null).Select(p => _mapper.Map<Response.ProductResponse>(p)).ToList();
-            return Task.FromResult(ResultT<List<Response.ProductResponse>>.Success(products));
+            var products = await _repository.FindAll().Select(p => _mapper.Map<Response.ProductResponse>(p)).ToListAsync();
+            return ResultT<List<Response.ProductResponse>>.Success(products);
         }
     }
 }
