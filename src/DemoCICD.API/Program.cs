@@ -11,15 +11,6 @@ namespace DemoCICD.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
-
-            // Add Swagger/OpenAPI services
-            builder.Services.AddSwaggerGen();
-
             //add configuration for the application
             builder.Services.AddConfigureApplication();
 
