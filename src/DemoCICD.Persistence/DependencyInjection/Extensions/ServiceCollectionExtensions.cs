@@ -1,5 +1,8 @@
-﻿using DemoCICD.Domain.Entities.Identity;
+﻿using DemoCICD.Domain.Abstractions;
+using DemoCICD.Domain.Abstractions.Repositories;
+using DemoCICD.Domain.Entities.Identity;
 using DemoCICD.Persistence.DependencyInjection.Options;
+using DemoCICD.Persistence.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -62,6 +65,14 @@ namespace DemoCICD.Persistence.DependencyInjection.Extensions
                 .Bind(section)
                 .ValidateDataAnnotations()
                 .ValidateOnStart();
+        }
+
+        public static IServiceCollection AddRepositoryBaseConfiguration(this IServiceCollection services)
+        {
+            services.AddTransient<IRepositoryBase<,>, RepositoryBase<,>>();
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+
+            return services;
         }
     }
 }

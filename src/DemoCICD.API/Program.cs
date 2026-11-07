@@ -25,7 +25,7 @@ namespace DemoCICD.API
 
             builder.Services.ConfigureSqlServerRetryOption(builder.Configuration.GetSection(nameof(SqlServerRetryOptions)));
             builder.Services.AddConfigurePersistenceSqlServer();
-
+            builder.Services.AddRepositoryBaseConfiguration();
 
             var app = builder.Build();
  
