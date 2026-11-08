@@ -69,7 +69,7 @@ namespace DemoCICD.Persistence.DependencyInjection.Extensions
 
         public static IServiceCollection AddRepositoryBaseConfiguration(this IServiceCollection services)
         {
-            services.AddTransient<IRepositoryBase<,>, RepositoryBase<,>>();
+            services.AddTransient(typeof(IRepositoryBase<,>), typeof(RepositoryBase<,>));
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
 
             return services;
