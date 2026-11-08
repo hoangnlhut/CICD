@@ -3,6 +3,7 @@ using DemoCICD.Contract.Abstractions.Message;
 using DemoCICD.Contract.Services.Product;
 using DemoCICD.Contract.Shared;
 using DemoCICD.Domain.Abstractions.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoCICD.Application.UseCases.V1.Queries.Product
 {
@@ -20,8 +21,11 @@ namespace DemoCICD.Application.UseCases.V1.Queries.Product
         public async Task<ResultT<List<Response.ProductResponse>>> Handle(Query.GetProductQuery request, CancellationToken cancellationToken)
         {
 
-            var products = await _repository.FindAll().Select(p => _mapper.Map<Response.ProductResponse>(p)).ToListAsync();
-            return ResultT<List<Response.ProductResponse>>.Success(products);
+            var products = await _repository.FindAll().ToListAsync();
+
+            var result = _mapper.Map<List<Response.ProductResponse>>(products);
+
+            return ResultT<List<Response.ProductResponse>>.Success(result);
         }
     }
 }
