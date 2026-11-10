@@ -16,7 +16,6 @@ namespace DemoCICD.API
             // Configure API versioning first
             builder.Services.AddApiVersioning().AddApiExplorer();
 
-            //builder.Services.AddSwaggerGen();
             builder.Services.AddSwagger();
 
             // configure serilog
