@@ -22,9 +22,10 @@
 
         public IQueryable<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> items = _context.Set<TEntity>();
+            // Importance Always include AsNoTracking for Query Side;
+            IQueryable<TEntity> items = _context.Set<TEntity>().AsNoTracking();
 
-            if(includeProperties != null)
+            if (includeProperties != null)
             {
                 foreach (var includeProperty in includeProperties)
                 {
@@ -40,15 +41,12 @@
             return items;
         }
 
-        public TEntity FindById(TKey id, params Expression<Func<TEntity, object>>[] includeProperties)
-        {
-            return FindAll(x => x.Id.Equals(id), includeProperties).SingleOrDefault();
-        }
+        public async Task<TEntity> FindByIdAsync(TKey id, CancellationToken cancellationToken = default, params Expression<Func<TEntity, object>>[] includeProperties)
+       => await FindAll(null, includeProperties).AsTracking().SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
 
-        public TEntity FindSingle(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
-        {
-            return FindAll(predicate, includeProperties).SingleOrDefault();
-        }
+        public async Task<TEntity> FindSingleAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default, params Expression<Func<TEntity, object>>[] includeProperties)
+            => await FindAll(null, includeProperties).AsTracking().SingleOrDefaultAsync(predicate, cancellationToken);
+
 
         public void Add(TEntity entity)
         {
