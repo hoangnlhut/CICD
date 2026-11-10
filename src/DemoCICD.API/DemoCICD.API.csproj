@@ -27,4 +27,8 @@
     <EditorConfigFiles Remove="E:\LEARNING\SELF_TRAINING_FOLDER\.NET_Projects\A999_DotNet_Microservices\TranDongCourse\DemoCICD\src\DemoCICD.API\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DependencyInjection\" />
+  </ItemGroup>
+
 </Project>

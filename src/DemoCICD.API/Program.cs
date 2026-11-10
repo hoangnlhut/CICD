@@ -1,4 +1,5 @@
 
+using DemoCICD.API.DependencyInjection.Extensions;
 using DemoCICD.Application.DependencyInjection.Extensions;
 using DemoCICD.Persistence.DependencyInjection.Extensions;
 using DemoCICD.Persistence.DependencyInjection.Options;
@@ -8,11 +9,15 @@ namespace DemoCICD.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddSwaggerGen();
+            // Configure API versioning first
+            builder.Services.AddApiVersioning().AddApiExplorer();
+
+            //builder.Services.AddSwaggerGen();
+            builder.Services.AddSwagger();
 
             // configure serilog
             Log.Logger = new LoggerConfiguration()
@@ -32,17 +37,9 @@ namespace DemoCICD.API
 
             //Api
             builder.Services.AddControllers().AddApplicationPart(DemoCICD.Presentation.AssemblyReference.Assembly);
-            
+
 
             var app = builder.Build();
- 
-            // Configure the HTTP request pipeline.
-            //if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-                app.UseSwagger();   // Serves the generated JSON document
-                app.UseSwaggerUI(); // Serves the interactive web UI
-            }
 
             app.UseHttpsRedirection();
 
@@ -51,7 +48,26 @@ namespace DemoCICD.API
 
             app.MapControllers();
 
-            app.Run();
+            if (builder.Environment.IsDevelopment() || builder.Environment.IsStaging())
+            {
+                app.ConfigureSwagger();
+            }
+
+            try
+            {
+                await app.RunAsync();
+                Log.Information("Stop Cleanly");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "An unhanded exception occurred during bootstrapping");
+                await app.StopAsync();
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+                await app.DisposeAsync();
+            }
         }
     }
 }
