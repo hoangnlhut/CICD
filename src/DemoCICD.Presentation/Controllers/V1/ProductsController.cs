@@ -1,12 +1,13 @@
 ﻿using Asp.Versioning;
+using Asp.Versioning;
 using DemoCICD.Contract.Enumerations;
+using DemoCICD.Contract.Extensions;
 using DemoCICD.Contract.Services.Product;
 using DemoCICD.Contract.Shared;
 using DemoCICD.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Asp.Versioning;
 
 namespace DemoCICD.Presentation.Controllers.V1
 {
@@ -22,10 +23,7 @@ namespace DemoCICD.Presentation.Controllers.V1
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Products(string? SearchTerm, string? SortColumn, string? sortOrder)
         {
-            //always get the latest data from the database by get descending data
-            var sort = !string.IsNullOrWhiteSpace(sortOrder) ? (sortOrder.Equals("asc", StringComparison.OrdinalIgnoreCase) ? SortOrder.Ascending : SortOrder.Descending) : SortOrder.Descending;
-
-            var query = new Query.GetProductQuery(SearchTerm, SortColumn, sort);
+            var query = new Query.GetProductQuery(SearchTerm, SortColumn, sortOrder.ConvertStringToSortOrder());
             var result = await Sender.Send(query);
             return Ok(result);
         }
