@@ -11,7 +11,7 @@ namespace DemoCICD.Contract.Services.Product
 {
     public static class Query
     {
-        public record GetProductQuery(string? SearchTerm, string? SortColumn, SortOrder? SortOrder) : IQuery<List<ProductResponse>>;
-        public record GetProductByIdQuery(Guid Id) : IQuery<ProductResponse>;
+        public record GetProductQuery(string? searchTerm, IDictionary<string, SortOrder>? sortColumnAndOrder) : IQuery<List<ProductResponse>>;
+        public record GetProductByIdQuery(Guid id) : IQuery<ProductResponse>;
     }
 }

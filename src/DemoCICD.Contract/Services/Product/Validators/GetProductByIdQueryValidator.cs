@@ -12,7 +12,7 @@ namespace DemoCICD.Contract.Services.Product.Validators
     {
         public GetProductByIdQueryValidator()
         {
-            this.RuleFor(x => x.Id)
+            this.RuleFor(x => x.id)
                .NotEmpty().WithMessage("Product ID is required.");
         }
     }

@@ -21,10 +21,10 @@ namespace DemoCICD.Application.UseCases.V1.Queries.Product
 
         public async Task<ResultT<Response.ProductResponse>> Handle(Query.GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            var product = await _repository.FindByIdAsync(request.Id, cancellationToken, null);
+            var product = await _repository.FindByIdAsync(request.id, cancellationToken, null);
             if (product == null)
             {
-                throw new ProductNotFoundException(request.Id);
+                throw new ProductNotFoundException(request.id);
             }
 
             var result = _mapper.Map<Response.ProductResponse>(product);
