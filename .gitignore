@@ -30,6 +30,7 @@ x64/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+logs/
 *_i.c
 *_p.c
 *.ilk
