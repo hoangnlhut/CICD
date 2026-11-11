@@ -8,12 +8,12 @@
 
   <ItemGroup>
     <Folder Include="DataTransferObjects\" />
-    <Folder Include="Enumerations\" />
     <Folder Include="JsonConverters\" />
     <Folder Include="Services\Order\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.SmartEnum" Version="8.2.0" />
     <PackageReference Include="FluentValidation" Version="12.2.0" />
     <PackageReference Include="MediatR" Version="14.2.0" />
   </ItemGroup>
