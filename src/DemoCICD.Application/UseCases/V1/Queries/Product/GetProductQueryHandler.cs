@@ -52,7 +52,7 @@ namespace DemoCICD.Application.UseCases.V1.Queries.Product
 
                 productsQuery += $" OFFSET {(PageIndex - 1) * PageSize} ROWS FETCH NEXT {PageSize} ROWS ONLY";
 
-                var products = await _context.Products.FromSqlRaw(productsQuery).ToListAsync(cancellationToken: cancellationToken);
+                var products = await _context.Products.FromSqlRaw(productsQuery).AsNoTracking().ToListAsync(cancellationToken: cancellationToken);
 
                 var totalCount = await _context.Products.CountAsync(cancellationToken);
 
