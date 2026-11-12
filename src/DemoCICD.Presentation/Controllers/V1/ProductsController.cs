@@ -2,7 +2,7 @@
 using Asp.Versioning;
 using DemoCICD.Contract.Enumerations;
 using DemoCICD.Contract.Extensions;
-using DemoCICD.Contract.Services.Product;
+using DemoCICD.Contract.Services.V1.Product;
 using DemoCICD.Contract.Shared;
 using DemoCICD.Presentation.Abstractions;
 using MediatR;
@@ -18,18 +18,27 @@ namespace DemoCICD.Presentation.Controllers.V1
         {
         }
 
+
         [HttpGet(Name = "GetProducts")]
-        [ProducesResponseType(typeof(IEnumerable<Response.ProductResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResultT<PagedResult<Response.ProductResponse>>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Products(string? SearchTerm, string? SortColumn, string? sortOrder)
+        public async Task<IActionResult> Products(string? serchTerm = null,
+        string? sortColumn = null,
+        string? sortOrder = null,
+        string? sortColumnAndOrder = null,
+        int pageIndex = 1,
+        int pageSize = 10)
         {
-            var query = new Query.GetProductQuery(SearchTerm, SortColumn, sortOrder.ConvertStringToSortOrder());
-            var result = await Sender.Send(query);
+            var result = await Sender.Send(new Query.GetProductsQuery(serchTerm, sortColumn,
+                SortOrderExtension.ConvertStringToSortOrder(sortOrder),
+                SortOrderExtension.ConvertStringToSortOrderV2(sortColumnAndOrder),
+                pageIndex,
+                pageSize));
             return Ok(result);
         }
 
         [HttpGet("{productId}", Name = "GetProductById")]
-        [ProducesResponseType(typeof(Response.ProductResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResultT<Response.ProductResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> ProductById(Guid productId)
         {
@@ -39,7 +48,7 @@ namespace DemoCICD.Presentation.Controllers.V1
         }
 
         [HttpPost(Name = "CreateProduct")]
-        [ProducesResponseType(typeof(Result), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> CreateProduct([FromBody] Command.CreateProduct request)
         {

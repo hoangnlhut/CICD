@@ -22,6 +22,7 @@ namespace DemoCICD.Persistence
         public DbSet<Action> Actions { get; set; }
         public DbSet<Function> Functions { get; set; }
         public DbSet<ActionInFunction> ActionInFunctions { get; set; }
+        public DbSet<Product> Products { get; set; }
 
     }
 }
