@@ -1,12 +1,6 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DemoCICD.Contract.Services.Product.Command;
 
-namespace DemoCICD.Contract.Services.Product.Validators
+namespace DemoCICD.Contract.Services.V1.Product.Validators
 {
     public class GetProductByIdQueryValidator : AbstractValidator<Query.GetProductByIdQuery>
     {

@@ -1,12 +1,15 @@
 ﻿using FluentValidation;
-using static DemoCICD.Contract.Services.Product.Command;
+using static DemoCICD.Contract.Services.V1.Product.Command;
 
-namespace DemoCICD.Contract.Services.Product.Validators
+namespace DemoCICD.Contract.Services.V1.Product.Validators
 {
-    public class CreateProductValidator : AbstractValidator<CreateProduct>
+    public class UpdateProductValidator : AbstractValidator<UpdateProduct>
     {
-        public CreateProductValidator()
+        public UpdateProductValidator()
         {
+            this.RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("Product ID is required.");
+
             this.RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Product name is required.")
                 .MaximumLength(100).WithMessage("Product name must not exceed 100 characters.");

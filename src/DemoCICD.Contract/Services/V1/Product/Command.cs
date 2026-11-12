@@ -1,7 +1,6 @@
 ﻿using DemoCICD.Contract.Abstractions.Message;
-using System.Drawing;
 
-namespace DemoCICD.Contract.Services.Product
+namespace DemoCICD.Contract.Services.V1.Product
 {
     public static class Command
     {

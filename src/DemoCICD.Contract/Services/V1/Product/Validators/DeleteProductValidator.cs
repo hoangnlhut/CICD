@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using static DemoCICD.Contract.Services.Product.Command;
+using static DemoCICD.Contract.Services.V1.Product.Command;
 
-namespace DemoCICD.Contract.Services.Product.Validators
+namespace DemoCICD.Contract.Services.V1.Product.Validators
 {
     public class DeleteProductValidator : AbstractValidator<DeleteProduct>
     {
